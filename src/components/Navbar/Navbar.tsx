@@ -1,15 +1,17 @@
-import React from 'react';
-import { FaRegImage } from 'react-icons/fa6';
+import React, { useState } from 'react';
+import { MdImagesearchRoller } from 'react-icons/md';
 import Navigation from './Navigation/Navigation';
 import SearchForm from './SearchForm/SearchForm';
 import Dropdown from './Dropdown/Dropdown';
 
 const Navbar: React.FC = () => {
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+
   return (
     <nav className='navbar navbar-expand-lg bg-body-tertiary'>
       <div className='container-fluid'>
         <a className='navbar-brand d-flex align-items-center gap-2' href='#'>
-          <FaRegImage />
+          <MdImagesearchRoller />
           <span className='mr-2'>Gallery</span>
         </a>
         <button
