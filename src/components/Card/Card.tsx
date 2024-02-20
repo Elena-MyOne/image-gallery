@@ -1,12 +1,10 @@
 import React from 'react';
 
-interface CardProps {
-  index: number;
-}
+interface CardProps {}
 
-const Card: React.FC<CardProps> = ({ index }) => {
+const Card: React.FC<CardProps> = () => {
   return (
-    <div className='col mb-5' key={index}>
+    <div className='col mb-5'>
       <div className='card' style={{ width: '18rem' }}>
         <img src='https://via.placeholder.com/200' className='card-img-top' alt='placeholder' />
         <div className='card-body'>

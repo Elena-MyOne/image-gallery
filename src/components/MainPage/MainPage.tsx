@@ -7,7 +7,7 @@ const MainPage: React.FC = () => {
       <h1 className='mb-5'>Gallery</h1>
       <div className='cards row'>
         {Array.from({ length: 8 }).map((_, index) => (
-          <Card index={index} />
+          <Card key={index} />
         ))}
       </div>
     </section>
