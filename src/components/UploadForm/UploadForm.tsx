@@ -44,7 +44,7 @@ const UploadForm: React.FC = () => {
         <>
           <p className='display-6 text-center mb-3'>Upload Stock Image</p>
           <div className='mb-5 d-flex align-items-center justify-content-center'>
-            <Preview {...state.inputs} />
+            <Preview />
             <form className='mb-2' style={{ textAlign: 'left' }} onSubmit={handleOnSubmit}>
               <div className='mb-3'>
                 <input
