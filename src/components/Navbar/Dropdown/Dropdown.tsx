@@ -4,7 +4,6 @@ const Dropdown: React.FC = () => {
   return (
     <ul className='navbar-nav mb-2 mb-lg-0'>
       {' '}
-      {/* remove ms-auto */}
       <li className='nav-item dropdown'>
         <a
           className='nav-link dropdown-toggle'

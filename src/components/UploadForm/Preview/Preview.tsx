@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Context } from '../../../context/context';
 
-interface PreviewProps {
-  path: string | null;
-}
+const Preview: React.FC = () => {
+  const { state } = useContext(Context!)!;
 
-const Preview: React.FC<PreviewProps> = ({ path }) => {
+  const path = state.inputs.path;
+
   return (
     <>
       {path && (
