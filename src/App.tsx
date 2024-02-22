@@ -1,13 +1,12 @@
 import './App.scss';
+import Layout from './components/Layout/Layout';
 import MainPage from './components/MainPage/MainPage';
-import Navbar from './components/Navbar/Navbar';
 
 function App() {
   return (
-    <>
-      <Navbar />
+    <Layout>
       <MainPage />
-    </>
+    </Layout>
   );
 }
 
