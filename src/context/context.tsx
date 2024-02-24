@@ -1,10 +1,15 @@
 import { Dispatch, createContext, useReducer } from 'react';
 import { FileItem } from '../models/interfaces';
+import Firestore from '../handlers/firestore';
+
+const { readDocs } = Firestore;
 
 const photos: FileItem[] = [];
 
 export enum ACTION {
   SET_ITEM = 'SET_ITEM',
+  SET_ITEMS = 'SET_ITEMS',
+  READ_ITEM = 'READ_ITEM',
   TOGGLE_COLLAPSE = 'TOGGLE_COLLAPSE',
   SET_INPUTS = 'SET_INPUTS',
 }
@@ -18,6 +23,7 @@ interface State {
 
 type Action =
   | { type: ACTION.SET_ITEM }
+  | { type: ACTION.SET_ITEMS; payload: { items: FileItem[] } }
   | { type: ACTION.SET_INPUTS; payload: { value: string | File } }
   | { type: ACTION.TOGGLE_COLLAPSE; payload: { bool: boolean } };
 
@@ -41,6 +47,11 @@ function reducer(state: State, action: Action): State {
         items: [newItem, ...state.items],
         count: state.items.length + 1,
         inputs: { title: null, file: null, path: null },
+      };
+    case ACTION.SET_ITEMS:
+      return {
+        ...state,
+        items: action.payload.items,
       };
     case ACTION.SET_INPUTS:
       if (action.payload.value instanceof File) {
@@ -75,14 +86,19 @@ function reducer(state: State, action: Action): State {
 interface ContextValue {
   state: State;
   dispatch: Dispatch<Action>;
+  read: () => Promise<void>;
 }
 
 export const Context = createContext<ContextValue | null>(null);
 
 const Provider = ({ children }: React.PropsWithChildren<{}>) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const read = async () => {
+    const items = await readDocs('stock');
+    dispatch({ type: ACTION.SET_ITEMS, payload: { items } });
+  };
 
-  return <Context.Provider value={{ state, dispatch }}>{children}</Context.Provider>;
+  return <Context.Provider value={{ state, dispatch, read }}>{children}</Context.Provider>;
 };
 
 export default Provider;
