@@ -1,4 +1,4 @@
-import React, { useMemo, useContext } from 'react';
+import React, { useMemo, useContext, useEffect } from 'react';
 import { Context } from '../../context/context';
 import Card from '../Card/Card';
 import UploadForm from '../UploadForm/UploadForm';
@@ -8,11 +8,15 @@ const defaultTitle = 'Image One';
 const defaultPath = 'https://picsum.photos/id/1006/200/200';
 
 const MainPage: React.FC = () => {
-  const { state } = useContext(Context!)!;
+  const { state, read } = useContext(Context!)!;
 
   const count = useMemo(() => {
     return `You have ${state.items.length} image${state.items.length > 1 ? 's' : ''}`;
   }, [state.items]);
+
+  useEffect(() => {
+    read();
+  }, []);
 
   return (
     <section className='container mt-5'>

@@ -1,6 +1,9 @@
 import React, { useContext, useMemo } from 'react';
 import Preview from './Preview/Preview';
 import { ACTION, Context } from '../../context/context';
+import Firestore from '../../handlers/firestore';
+
+const { writeDoc } = Firestore;
 
 const UploadForm: React.FC = () => {
   const { state, dispatch } = useContext(Context!)!;
@@ -10,6 +13,9 @@ const UploadForm: React.FC = () => {
 
   const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    writeDoc(state.inputs, 'stocks').then(console.log);
+
     if (state.inputs.path) {
       dispatch({ type: ACTION.SET_ITEM });
     }
