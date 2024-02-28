@@ -25,7 +25,12 @@ const MainPage: React.FC = () => {
       <p>{count}</p>
       <div className='cards row'>
         {state.items.map((item: FileItem, index: number) => (
-          <Card key={index} title={item.title ?? defaultTitle} path={item.path ?? defaultPath} />
+          <Card
+            key={index}
+            title={item.title ?? defaultTitle}
+            path={item.path ?? defaultPath}
+            createdAt={item.createdAt ?? ''}
+          />
         ))}
       </div>
     </section>

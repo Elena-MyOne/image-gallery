@@ -2,8 +2,10 @@ import React, { useContext, useMemo } from 'react';
 import Preview from './Preview/Preview';
 import { ACTION, Context } from '../../context/context';
 import Firestore from '../../handlers/firestore';
+import Storage from '../../handlers/storage';
 
 const { writeDoc } = Firestore;
+const { uploadFile, downloadFile } = Storage;
 
 const UploadForm: React.FC = () => {
   const { state, dispatch } = useContext(Context!)!;
@@ -13,18 +15,20 @@ const UploadForm: React.FC = () => {
 
   const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    writeDoc(state.inputs, 'stocks').then(console.log);
-
-    if (state.inputs.path) {
-      dispatch({ type: ACTION.SET_ITEM });
-    }
-    toggleCollapse(!state.isCollapsed);
+    uploadFile(state.inputs)
+      .then(downloadFile)
+      .then((url) => {
+        writeDoc({ ...state.inputs, path: url }, 'stocks').then(() => {
+          if (state.inputs.path) {
+            dispatch({ type: ACTION.SET_ITEM });
+          }
+          toggleCollapse(!state.isCollapsed);
+        });
+      });
   };
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, files } = e.target;
-
     if (name === 'file' && files && files.length > 0) {
       const selectedFile = files[0];
       dispatch({ type: ACTION.SET_INPUTS, payload: { value: selectedFile } });
@@ -66,7 +70,7 @@ const UploadForm: React.FC = () => {
                 <input type='file' className='form-control' name='file' onChange={handleOnChange} />
               </div>
               <button type='submit' className='btn btn-success float-end' disabled={isDisabled}>
-                Save changes
+                Save and upload
               </button>
             </form>
           </div>
