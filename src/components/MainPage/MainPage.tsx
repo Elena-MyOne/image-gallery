@@ -1,5 +1,5 @@
 import React, { useMemo, useContext, useEffect } from 'react';
-import { Context } from '../../context/context';
+import { Context } from '../../context/FirestoreContext';
 import Card from '../Card/Card';
 import UploadForm from '../UploadForm/UploadForm';
 import { FileItem } from '../../models/interfaces';

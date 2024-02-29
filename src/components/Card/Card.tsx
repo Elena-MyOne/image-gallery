@@ -10,7 +10,7 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ path, title, createdAt }) => {
   const timestamp = useMemo(() => {
     if (typeof createdAt === 'string') {
-      return `${new Date(createdAt)}`;
+      return ``;
     } else {
       const date = `${new Date(createdAt.seconds * 1000)}`.split(' ');
       return `${date[1]} ${date[2]}, ${date[3]}`;

@@ -1,4 +1,6 @@
 import React from 'react';
+import LogInButton from '../LogInButton/LogInButton';
+import LogOutButton from '../LogOutButton/LogOutButton';
 
 const Dropdown: React.FC = () => {
   return (
@@ -21,6 +23,13 @@ const Dropdown: React.FC = () => {
               Profile
             </a>
           </li>
+          <li>
+            <hr className='dropdown divider' />
+          </li>
+          <div className='d-flex justify-content-center'>
+            <LogInButton />
+            <LogOutButton />
+          </div>
         </ul>
       </li>
     </ul>

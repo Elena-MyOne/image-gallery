@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Context } from '../../../context/context';
+import { Context } from '../../../context/FirestoreContext';
 
 const Preview: React.FC = () => {
   const { state } = useContext(Context!)!;
