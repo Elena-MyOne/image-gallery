@@ -3,7 +3,8 @@ import FirebaseAuth from '../handlers/auth';
 
 type User = {
   id: string;
-  name: string;
+  displayName: string;
+  photoURL: string;
 };
 
 const { signIn, signOut } = FirebaseAuth;
