@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
 import { Context } from '../../../context/FirestoreContext';
+// import { useAuthContext } from '../../../context/AuthContext';
 
 const Preview: React.FC = () => {
   const { state } = useContext(Context!)!;
+  // const { currentUser } = useAuthContext() || {};
 
   const path = state.inputs.path;
 

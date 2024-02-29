@@ -5,9 +5,10 @@ interface CardProps {
   title: string;
   path: string;
   createdAt: Timestamp | string;
+  user: any;
 }
 
-const Card: React.FC<CardProps> = ({ path, title, createdAt }) => {
+const Card: React.FC<CardProps> = ({ path, title, createdAt, user }) => {
   const timestamp = useMemo(() => {
     if (typeof createdAt === 'string') {
       return ``;
@@ -33,7 +34,7 @@ const Card: React.FC<CardProps> = ({ path, title, createdAt }) => {
             <h6 className='card-title text-center fw-semibold text-capitalize'>{title}</h6>
             <div className='content d-flex gap-2 justify-content-between'>
               <p>{timestamp}</p>
-              <p className='fst-italic'>@username</p>
+              <p className='fst-italic'>{`@${user}`}</p>
             </div>
           </div>
         </div>

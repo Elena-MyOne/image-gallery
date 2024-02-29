@@ -3,23 +3,30 @@ import Preview from './Preview/Preview';
 import { ACTION, Context } from '../../context/FirestoreContext';
 import Firestore from '../../handlers/firestore';
 import Storage from '../../handlers/storage';
+import { useAuthContext } from '../../context/AuthContext';
 
 const { writeDoc } = Firestore;
 const { uploadFile, downloadFile } = Storage;
 
 const UploadForm: React.FC = () => {
-  const { state, dispatch } = useContext(Context!)!;
+  const { state, dispatch, read } = useContext(Context!)!;
+  const { currentUser } = useAuthContext() || {};
 
   const toggleCollapse = (bool: boolean) =>
     dispatch({ type: ACTION.TOGGLE_COLLAPSE, payload: { bool } });
+
+  const userName = useMemo(() => {
+    return currentUser?.displayName.split(' ') || '';
+  }, [currentUser]);
 
   const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     uploadFile(state.inputs)
       .then(downloadFile)
       .then((url) => {
-        writeDoc({ ...state.inputs, path: url }, 'stocks').then(() => {
+        writeDoc({ ...state.inputs, path: url, user: userName[0] }, 'stocks').then(() => {
           if (state.inputs.path) {
+            read();
             dispatch({ type: ACTION.SET_ITEM });
           }
           toggleCollapse(!state.isCollapsed);

@@ -34,6 +34,7 @@ const MainPage: React.FC = () => {
             title={item.title ?? defaultTitle}
             path={item.path ?? defaultPath}
             createdAt={item.createdAt ?? ''}
+            user={item.user ?? 'anonymous'}
           />
         ))}
       </div>

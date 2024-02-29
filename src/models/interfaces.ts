@@ -5,4 +5,5 @@ export interface FileItem {
   file?: null | File;
   path: null | string;
   createdAt?: null | Timestamp;
+  user?: null | any;
 }
