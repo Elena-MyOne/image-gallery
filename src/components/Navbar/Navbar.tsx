@@ -8,8 +8,8 @@ const Navbar: React.FC = () => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
 
   return (
-    <nav className='navbar navbar-expand-lg bg-body-tertiary'>
-      <div className='container-fluid'>
+    <nav className='navbar navbar-expand-lg navbar-light bg-light mb-5'>
+      <div className='container'>
         <a className='navbar-brand d-flex align-items-center gap-2' href='#'>
           <MdImagesearchRoller />
           <span className='mr-2'>Gallery</span>
@@ -25,10 +25,10 @@ const Navbar: React.FC = () => {
         >
           <span className='navbar-toggler-icon'></span>
         </button>
-        <div className='collapse navbar-collapse' id='navbarSupportedContent'>
+        <div className='collapse navbar-collapse ' id='navbarSupportedContent'>
           <Navigation />
-          <SearchForm />
           <Dropdown />
+          <SearchForm />
         </div>
       </div>
     </nav>

@@ -1,6 +1,29 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import LogInButton from '../LogInButton/LogInButton';
+import LogOutButton from '../LogOutButton/LogOutButton';
+import { useAuthContext } from '../../../context/AuthContext';
 
 const Dropdown: React.FC = () => {
+  const { currentUser } = useAuthContext() || {};
+
+  const userName = useMemo(() => {
+    return currentUser?.displayName || 'Profile';
+  }, [currentUser]);
+
+  const avatar = useMemo(() => {
+    return !!currentUser ? (
+      <img
+        className='avatar'
+        src={currentUser?.photoURL}
+        alt='currentUser?.displayName'
+        width={34}
+        height={34}
+      />
+    ) : (
+      'Login'
+    );
+  }, [currentUser]);
+
   return (
     <ul className='navbar-nav mb-2 mb-lg-0'>
       {' '}
@@ -13,14 +36,21 @@ const Dropdown: React.FC = () => {
           data-bs-toggle='dropdown'
           aria-expanded='false'
         >
-          Login
+          {avatar}
         </a>
         <ul className='dropdown-menu' aria-labelledby='navbarDropdown'>
           <li>
             <a className='dropdown-item text-center' href='#'>
-              Profile
+              {userName}
             </a>
           </li>
+          <li>
+            <hr className='dropdown divider' />
+          </li>
+          <div className='d-flex justify-content-center'>
+            <LogInButton />
+            <LogOutButton />
+          </div>
         </ul>
       </li>
     </ul>
