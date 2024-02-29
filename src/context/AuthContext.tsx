@@ -7,11 +7,12 @@ type User = {
   photoURL: string;
 };
 
-const { signIn, signOut } = FirebaseAuth;
+const { signIn, signOut, getCurrentUser } = FirebaseAuth;
 
 export interface State {
   login: () => Promise<any>;
   logout: () => Promise<void>;
+  authenticate: () => Promise<any>;
   currentUser: User | null;
 }
 
@@ -22,21 +23,19 @@ const AuthProvider = ({ children }: React.PropsWithChildren<{}>) => {
 
   const login = useCallback(() => signIn().then(setCurrentUser), []);
   const logout = useCallback(() => signOut().then(() => setCurrentUser(null)), []);
+  const authenticate = useCallback(() => getCurrentUser().then(setCurrentUser), []);
 
   const value = useMemo(() => {
     return {
       login,
       logout,
+      authenticate,
       currentUser,
     };
-  }, [login, logout, currentUser]);
+  }, [login, logout, authenticate, currentUser]);
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
-
-// export const useAuthContext = () => {
-//   return useContext(AuthContext);
-// };
 
 export const useAuthContext = (): State | null => {
   const authContext = useContext(AuthContext);

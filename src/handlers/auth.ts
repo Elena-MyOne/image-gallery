@@ -29,6 +29,11 @@ const FirebaseAuth = {
         });
     });
   },
+  getCurrentUser: (): Promise<any> => {
+    return new Promise((resolve) => {
+      return auth.onAuthStateChanged(resolve);
+    });
+  },
 };
 
 export default FirebaseAuth;
