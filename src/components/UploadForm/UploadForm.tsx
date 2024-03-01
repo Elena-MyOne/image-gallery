@@ -4,6 +4,7 @@ import { ACTION, Context } from '../../context/FirestoreContext';
 import Firestore from '../../handlers/firestore';
 import Storage from '../../handlers/storage';
 import { useAuthContext } from '../../context/AuthContext';
+import { getUserName } from '../../utils/getUserName';
 
 const { writeDoc } = Firestore;
 const { uploadFile, downloadFile } = Storage;
@@ -16,7 +17,7 @@ const UploadForm: React.FC = () => {
     dispatch({ type: ACTION.TOGGLE_COLLAPSE, payload: { bool } });
 
   const userName = useMemo(() => {
-    return currentUser?.displayName.split(' ') || '';
+    return getUserName(currentUser?.displayName);
   }, [currentUser]);
 
   const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -24,7 +25,7 @@ const UploadForm: React.FC = () => {
     uploadFile(state.inputs)
       .then(downloadFile)
       .then((url) => {
-        writeDoc({ ...state.inputs, path: url, user: userName[0] }, 'stocks').then(() => {
+        writeDoc({ ...state.inputs, path: url, user: userName }, 'stocks').then(() => {
           if (state.inputs.path) {
             read();
             dispatch({ type: ACTION.SET_ITEM });

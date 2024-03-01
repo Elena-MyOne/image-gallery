@@ -1,19 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
+// import React, { useState } from 'react';
 import { MdImagesearchRoller } from 'react-icons/md';
 import Navigation from './Navigation/Navigation';
 import SearchForm from './SearchForm/SearchForm';
 import Dropdown from './Dropdown/Dropdown';
+import { Link } from 'react-router-dom';
+import { POUTER_PATH } from '../../models/enums';
 
 const Navbar: React.FC = () => {
-  const [isVisible, setIsVisible] = useState<boolean>(false);
+  // const [isVisible, setIsVisible] = useState<boolean>(false);
 
   return (
     <nav className='navbar navbar-expand-lg navbar-light bg-light mb-5'>
       <div className='container'>
-        <a className='navbar-brand d-flex align-items-center gap-2' href='#'>
+        <Link to={POUTER_PATH.MAIN} className='navbar-brand d-flex align-items-center gap-2'>
           <MdImagesearchRoller />
           <span className='mr-2'>Gallery</span>
-        </a>
+        </Link>
         <button
           className='navbar-toggler'
           type='button'
