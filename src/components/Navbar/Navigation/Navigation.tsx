@@ -1,12 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { POUTER_PATH } from '../../../models/enums';
 
 const Navigation: React.FC = () => {
   return (
     <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
       <li className='nav-item'>
-        <a className='nav-link active' aria-current='page' href='#'>
+        <Link to={POUTER_PATH.MAIN} className='nav-link active' aria-current='page'>
           Home
-        </a>
+        </Link>
+      </li>
+      <li className='nav-item'>
+        <Link to={POUTER_PATH.STOCKS} className='nav-link' aria-current='page'>
+          My Stock Images
+        </Link>
       </li>
     </ul>
   );

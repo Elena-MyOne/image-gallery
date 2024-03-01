@@ -1,15 +1,16 @@
 import React from 'react';
-import Navbar from '../Navbar/Navbar';
+import Header from '../Header/Header';
+import { Outlet } from 'react-router-dom';
+import UploadForm from '../UploadForm/UploadForm';
 
-interface LayoutProps {
-  children: React.ReactNode;
-}
-
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout: React.FC = () => {
   return (
     <>
-      <Navbar />
-      {children}
+      <Header />
+      <main className='container mt-5'>
+        <UploadForm />
+        <Outlet />
+      </main>
     </>
   );
 };

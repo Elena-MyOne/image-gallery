@@ -1,11 +1,11 @@
 import { Timestamp } from 'firebase/firestore';
 import React, { useMemo } from 'react';
 
-interface CardProps {
+export interface CardProps {
   title: string;
   path: string;
   createdAt: Timestamp | string;
-  user: any;
+  user: string;
 }
 
 const Card: React.FC<CardProps> = ({ path, title, createdAt, user }) => {
