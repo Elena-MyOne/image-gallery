@@ -5,6 +5,7 @@ type User = {
   id: string;
   displayName: string;
   photoURL: string;
+  email: string;
 };
 
 const { signIn, signOut, getCurrentUser } = FirebaseAuth;

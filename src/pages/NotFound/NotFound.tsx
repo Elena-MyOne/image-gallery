@@ -12,7 +12,7 @@ const NotFound: React.FC = () => {
       <h1 className='text-center'>404</h1>
       <h3 className='text-center'>Looks like you are lost</h3>
       <button className='btn btn-secondary' onClick={() => navigate('/')}>
-        Go Back
+        Home Page
       </button>
     </div>
   );

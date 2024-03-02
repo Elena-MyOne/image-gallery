@@ -3,5 +3,6 @@ export enum POUTER_PATH {
   STOCKS = 'stock-images',
   IMAGE_CARD = 'images/:id',
   IMAGE = 'images',
+  PROFILE = 'profile',
   NOTFOUND = '*',
 }
