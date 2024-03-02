@@ -6,4 +6,5 @@ export interface FileItem {
   path: null | string;
   createdAt?: null | Timestamp | string;
   user?: null | any;
+  id?: null | string;
 }
