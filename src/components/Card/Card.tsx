@@ -1,14 +1,23 @@
 import { Timestamp } from 'firebase/firestore';
 import React, { useMemo } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { POUTER_PATH } from '../../models/enums';
 
 export interface CardProps {
   title: string;
   path: string;
   createdAt: Timestamp | string;
   user: string;
+  id: string;
 }
 
-const Card: React.FC<CardProps> = ({ path, title, createdAt, user }) => {
+const Card: React.FC<CardProps> = ({ path, title, createdAt, user, id }) => {
+  const navigate = useNavigate();
+
+  const handleOnClick = () => {
+    navigate(`/${POUTER_PATH.IMAGE}/${id}`, { state: { id } });
+  };
+
   const timestamp = useMemo(() => {
     if (typeof createdAt === 'string') {
       return ``;
@@ -20,7 +29,7 @@ const Card: React.FC<CardProps> = ({ path, title, createdAt, user }) => {
 
   return (
     <>
-      <div className='col mb-5'>
+      <div className='mb-5' onClick={handleOnClick}>
         <div className='card' style={{ width: '18rem' }}>
           <div
             style={{

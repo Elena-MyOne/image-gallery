@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { POUTER_PATH } from '../../../models/enums';
 import { useAuthContext } from '../../../context/AuthContext';
 
@@ -9,17 +9,24 @@ const Navigation: React.FC = () => {
   return (
     <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
       <li className='nav-item'>
-        <Link to={POUTER_PATH.MAIN} className='nav-link active' aria-current='page'>
+        <NavLink to={POUTER_PATH.MAIN} className='nav-link' aria-current='page'>
           Home
-        </Link>
+        </NavLink>
       </li>
-      <li className='nav-item'>
-        {currentUser && (
-          <Link to={POUTER_PATH.STOCKS} className='nav-link' aria-current='page'>
+      {currentUser && (
+        <li className='nav-item'>
+          <NavLink to={POUTER_PATH.STOCKS} className='nav-link' aria-current='page'>
             My Stock Images
-          </Link>
-        )}
-      </li>
+          </NavLink>
+        </li>
+      )}
+      {currentUser && (
+        <li className='nav-item'>
+          <NavLink to={POUTER_PATH.PROFILE} className='nav-link' aria-current='page'>
+            Profile
+          </NavLink>
+        </li>
+      )}
     </ul>
   );
 };

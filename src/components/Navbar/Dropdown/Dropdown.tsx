@@ -2,6 +2,8 @@ import React, { useMemo } from 'react';
 import LogInButton from '../LogInButton/LogInButton';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useAuthContext } from '../../../context/AuthContext';
+import { Link } from 'react-router-dom';
+import { POUTER_PATH } from '../../../models/enums';
 
 const Dropdown: React.FC = () => {
   const { currentUser } = useAuthContext() || {};
@@ -40,9 +42,11 @@ const Dropdown: React.FC = () => {
         </a>
         <ul className='dropdown-menu' aria-labelledby='navbarDropdown'>
           <li>
-            <a className='dropdown-item text-center' href='#'>
-              {userName}
-            </a>
+            {currentUser && (
+              <Link to={POUTER_PATH.PROFILE} className='dropdown-item text-center'>
+                {userName}
+              </Link>
+            )}
           </li>
           <li>
             <hr className='dropdown divider' />

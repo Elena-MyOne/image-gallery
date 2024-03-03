@@ -10,5 +10,6 @@ export const setCartItems = (items: FileItem[]) => {
     path: item.path ?? defaultPath,
     createdAt: item.createdAt ?? '',
     user: item.user ?? defaultUser,
+    id: item.id ?? '',
   }));
 };
