@@ -10,7 +10,10 @@ const Navbar: React.FC = () => {
   return (
     <nav className='navbar navbar-expand-lg navbar-light bg-light mb-5'>
       <div className='container'>
-        <Link to={POUTER_PATH.MAIN} className='navbar-brand d-flex align-items-center gap-2'>
+        <Link
+          to={POUTER_PATH.MAIN}
+          className='navbar-brand d-flex align-items-center gap-2 link-success link-offset-2 link-underline-opacity-0'
+        >
           <MdImagesearchRoller />
           <span className='mr-2'>Gallery</span>
         </Link>
