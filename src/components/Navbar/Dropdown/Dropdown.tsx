@@ -17,12 +17,14 @@ const Dropdown: React.FC = () => {
       <img
         className='avatar'
         src={currentUser?.photoURL}
-        alt='currentUser?.displayName'
+        alt={currentUser?.displayName}
         width={34}
         height={34}
       />
     ) : (
-      'Login'
+      <span className='pt-1' style={{ height: '34px', display: 'inline-block' }}>
+        Login
+      </span>
     );
   }, [currentUser]);
 
