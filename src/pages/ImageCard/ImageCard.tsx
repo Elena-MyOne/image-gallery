@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import Card from '../../components/Card/Card';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Context } from '../../context/FirestoreContext';
+import { IoIosArrowBack } from 'react-icons/io';
 
 const ImageCard: React.FC = () => {
   const navigate = useNavigate();
@@ -22,8 +23,14 @@ const ImageCard: React.FC = () => {
 
   return (
     <>
-      <button className='btn btn-link' onClick={() => navigate(-1)}>
-        Back
+      <button
+        className='btn btn-link link-success link-offset-2 link-underline-opacity-50 link-underline-opacity-100-hover'
+        onClick={() => navigate(-1)}
+      >
+        <span style={{ display: 'inline-block', marginRight: '5px' }}>
+          <IoIosArrowBack />
+        </span>
+        <span> Back</span>
       </button>
       <div className='d-flex justify-content-center my-5'>
         <Card {...item} />

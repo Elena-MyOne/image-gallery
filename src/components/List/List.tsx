@@ -7,9 +7,9 @@ interface ListProps {
 
 const List: React.FC<ListProps> = ({ items }) => {
   return (
-    <div className='row mt-3'>
+    <div className='row mt-3 mt-3 justify-content-center'>
       {items.map((item, i) => (
-        <div key={i} className='col-4 mb-5'>
+        <div key={i} className='col-lg-4 col-md-6 mb-5 d-flex justify-content-center'>
           <Card {...item} />
         </div>
       ))}

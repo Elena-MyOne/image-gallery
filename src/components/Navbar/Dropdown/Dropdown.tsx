@@ -17,12 +17,14 @@ const Dropdown: React.FC = () => {
       <img
         className='avatar'
         src={currentUser?.photoURL}
-        alt='currentUser?.displayName'
+        alt={currentUser?.displayName}
         width={34}
         height={34}
       />
     ) : (
-      'Login'
+      <span className='pt-1' style={{ height: '34px', display: 'inline-block' }}>
+        Login
+      </span>
     );
   }, [currentUser]);
 
@@ -30,24 +32,26 @@ const Dropdown: React.FC = () => {
     <ul className='navbar-nav mb-2 mb-lg-0'>
       {' '}
       <li className='nav-item dropdown'>
-        <a
+        <div
           className='nav-link dropdown-toggle'
-          href='#'
           id='navbarDropdown'
           role='button'
           data-bs-toggle='dropdown'
           aria-expanded='false'
         >
           {avatar}
-        </a>
+        </div>
         <ul className='dropdown-menu' aria-labelledby='navbarDropdown'>
-          <li>
-            {currentUser && (
+          {currentUser ? (
+            <li>
               <Link to={POUTER_PATH.PROFILE} className='dropdown-item text-center'>
                 {userName}
               </Link>
-            )}
-          </li>
+            </li>
+          ) : (
+            <li className='text-center'>{userName}</li>
+          )}
+
           <li>
             <hr className='dropdown divider' />
           </li>
