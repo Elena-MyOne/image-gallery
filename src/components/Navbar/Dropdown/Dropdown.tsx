@@ -30,16 +30,15 @@ const Dropdown: React.FC = () => {
     <ul className='navbar-nav mb-2 mb-lg-0'>
       {' '}
       <li className='nav-item dropdown'>
-        <a
+        <div
           className='nav-link dropdown-toggle'
-          href='#'
           id='navbarDropdown'
           role='button'
           data-bs-toggle='dropdown'
           aria-expanded='false'
         >
           {avatar}
-        </a>
+        </div>
         <ul className='dropdown-menu' aria-labelledby='navbarDropdown'>
           {currentUser ? (
             <li>
@@ -48,7 +47,7 @@ const Dropdown: React.FC = () => {
               </Link>
             </li>
           ) : (
-            <li className='text-center'>Profile</li>
+            <li className='text-center'>{userName}</li>
           )}
 
           <li>
