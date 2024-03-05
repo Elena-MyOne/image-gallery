@@ -41,13 +41,16 @@ const Dropdown: React.FC = () => {
           {avatar}
         </a>
         <ul className='dropdown-menu' aria-labelledby='navbarDropdown'>
-          <li>
-            {currentUser && (
+          {currentUser ? (
+            <li>
               <Link to={POUTER_PATH.PROFILE} className='dropdown-item text-center'>
                 {userName}
               </Link>
-            )}
-          </li>
+            </li>
+          ) : (
+            <li className='text-center'>Profile</li>
+          )}
+
           <li>
             <hr className='dropdown divider' />
           </li>

@@ -1,20 +1,28 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 import Preview from './Preview/Preview';
 import { ACTION, Context } from '../../context/FirestoreContext';
 import Firestore from '../../handlers/firestore';
 import Storage from '../../handlers/storage';
 import { useAuthContext } from '../../context/AuthContext';
 import { getUserName } from '../../utils/getUserName';
+import LoginAlert from './LoginAlert/LoginAlert';
 
 const { writeDoc } = Firestore;
 const { uploadFile, downloadFile } = Storage;
 
 const UploadForm: React.FC = () => {
+  const [isLoginPopup, setIsLoginPopup] = useState<boolean>(false);
   const { state, dispatch, read } = useContext(Context!)!;
   const { currentUser } = useAuthContext() || {};
 
-  const toggleCollapse = (bool: boolean) =>
+  const toggleCollapse = (bool: boolean) => {
+    if (!currentUser) {
+      setIsLoginPopup(true);
+      return;
+    }
+
     dispatch({ type: ACTION.TOGGLE_COLLAPSE, payload: { bool } });
+  };
 
   const userName = useMemo(() => {
     return getUserName(currentUser?.displayName);
@@ -58,7 +66,8 @@ const UploadForm: React.FC = () => {
         {state.isCollapsed ? 'Close' : 'Add file'}
       </button>
       <div className='clearfix mb-4'></div>
-      {state.isCollapsed && (
+      {isLoginPopup && <LoginAlert setIsLoginPopup={setIsLoginPopup} />}
+      {state.isCollapsed && !isLoginPopup && (
         <>
           <p className='display-6 text-center mb-3'>Upload Stock Image</p>
           <div className='mb-5 d-flex align-items-center justify-content-center'>
