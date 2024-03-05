@@ -3,7 +3,9 @@
 Welcome to the ImageGallery project! This project is a dynamic and interactive web application built
 to showcase a collection of images in a user-friendly gallery format. This project is based on a
 LinkedIn Learning course:
-[Link](https://www.linkedin.com/learning/building-production-ready-react-apps-setup-to-deployment-with-firebase/build-a-stellar-single-page-application-with-react?u=56674649).
+[Link](https://www.linkedin.com/learning/building-production-ready-react-apps-setup-to-deployment-with-firebase/build-a-stellar-single-page-application-with-react?u=56674649)
+
+![Capture](https://github.com/Elena-MyOne/image-gallery/assets/74279859/12efd53d-e06a-43f9-b27e-b4d2de2f9475)
 
 Here's a brief overview of the project:
 
@@ -19,13 +21,13 @@ The ImageGallery project leverages the following technologies and tools:
 
 front-end part
 
-- React.js
-- TypeScript
-- Bootstrap
+- **React.js**
+- **TypeScript**
+- **Bootstrap**
 
 back-end part
 
-- Firebase
+- **Firebase**
 
 ## Features
 
