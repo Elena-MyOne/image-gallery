@@ -4,6 +4,7 @@ Welcome to the ImageGallery project! This project is a dynamic and interactive w
 to showcase a collection of images in a user-friendly gallery format. This project is based on a
 LinkedIn Learning course:
 [Link](https://www.linkedin.com/learning/building-production-ready-react-apps-setup-to-deployment-with-firebase/build-a-stellar-single-page-application-with-react?u=56674649).
+
 Here's a brief overview of the project:
 
 ## Deployment
@@ -16,15 +17,15 @@ You can explore the deployed version of the ImageGallery project by visiting the
 
 The ImageGallery project leverages the following technologies and tools:
 
-- front-end part
+front-end part
 
-* React.js
-* TypeScript
-* Bootstrap
+- React.js
+- TypeScript
+- Bootstrap
 
-- back-end part
+back-end part
 
-* Firebase
+- Firebase
 
 ## Features
 
