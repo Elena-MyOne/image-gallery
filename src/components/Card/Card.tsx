@@ -1,6 +1,6 @@
 import { Timestamp } from 'firebase/firestore';
 import React, { useMemo } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { POUTER_PATH } from '../../models/enums';
 
 export interface CardProps {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAuthContext, State } from '../../../context/AuthContext';
+import { useAuthContext } from '../../../context/AuthContext';
 
 const LogInButton: React.FC = () => {
   const { login, currentUser } = useAuthContext() || {};
